@@ -44,4 +44,7 @@
         }
        })
     }
+    function clean(){
+        $("input[type='text'],input[type='password']").val("");
+    }
 </script>
