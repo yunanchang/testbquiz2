@@ -3,7 +3,7 @@ date_default_timezone_set("Asia/Taipei");
 session_start();
 class DB{
 
-    protected $dsn = "mysql:host=localhost;charset=utf8;dbname=db04";
+    protected $dsn = "mysql:host=localhost;charset=utf8;dbname=tbq2";
     protected $pdo;
     protected $table;
     
@@ -147,4 +147,15 @@ $Que=new DB('que');
 $Log=new DB('log');
 $News=new DB('news');
 
+
+if(!isset($_SESSION['visited'])){
+    if($Total->count(['date'=>date('Y-m-d')])>0){
+        $total=$Total->find(['date'=>date('Y-m-d')]);
+        $total['total']++;
+        $Total->save($total);
+    }else{
+        $Total->save(['total'=>1,'date'=>date('Y-m-d')]);
+    }
+    $_SESSION['visted']=1;
+}
 ?>

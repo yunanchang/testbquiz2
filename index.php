@@ -19,9 +19,12 @@
 
 	<div id="all">
 		<div id="title">
-			00 月 00 號 Tuesday | 今日瀏覽: 1 | 累積瀏覽: 36 </div>
+			<?= date('m月d日 l') ?> | 今日瀏覽: <?= $Total->find(['date' => date('Y-m-d')])['total']; ?>
+			| 累積瀏覽: <?= $Total->sum('total'); ?>
+			<a style="float: right;" href="./index.php">回首頁</a>
+		</div>
 		<div id="title2">
-
+			<a href="./index.php"><img src="./img/02B01.jpg" alt=""></a>
 		</div>
 		<div id="mm">
 			<div class="hal" id="lef">
@@ -38,16 +41,16 @@
 						<a href="?do=login">會員登入</a>
 					</span>
 					<div class="">
-					<?php
-					echo 'ss';
-					$do=$_GET['do']??'main';
-					$file="./front{$do}";
-					if(file_exists($file)){
-						include $file;
-					}else{
-						include "./front/main.php";
-					}
-					?>
+						<?php
+						echo 'ss';
+						$do = $_GET['do'] ?? 'main';
+						$file = "./front{$do}";
+						if (file_exists($file)) {
+							include $file;
+						} else {
+							include "./front/main.php";
+						}
+						?>
 					</div>
 				</div>
 			</div>
