@@ -21,8 +21,8 @@
     </tr>
     <tr>
         <td>
-            <input type="button" value="註冊">
-            <input type="reset" value="清除">
+            <input type="button" value="註冊" onclick="reg()">
+            <input type="reset" value="清除" onclick="clean()">
         </td>
         <td></td>
     </tr>
@@ -35,7 +35,7 @@
             acc:$('#acc').val(),
             pw:$('#pw').val(),
             pw2:$('#pw2').val(),
-            email:$('#eamil').val(),
+            email:$('#email').val(),
         }
 
         if(user.acc!=''&& user.pw!=''&& user.pw2!=''&&user.email!=''){
@@ -45,7 +45,8 @@
                         alert('帳號重複')
                     }else{
                         $.post('./api/reg.php',user,(res)=>{
-                            alert('註冊完成')
+                            // alert('註冊完成')
+                            console.log(res)
                         })
                     }
                 })

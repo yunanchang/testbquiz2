@@ -1,7 +1,6 @@
 <?php include_once 'db.php';
 
 
-
 $res=$User->count($_POST);
 
 if($res){
