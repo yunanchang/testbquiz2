@@ -30,7 +30,7 @@
         if(parseInt(res)==0){
             alert('查無帳號')
         }else{
-            $.post('./api/chk.php',{acc,pw},(res)=>{
+            $.post('./api/chk_pw.php',{acc,pw},(res)=>{
                 if(parseInt(res)==1){
                     if($('#acc').val()=='admin'){
                         location.href='back.php'
