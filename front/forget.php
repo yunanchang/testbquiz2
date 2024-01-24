@@ -12,9 +12,9 @@
 
 <script>
   function forget(){
-    $.get("./api/forget.php",{email:$("#email").val()},(res)=>{
+    $.post("./api/forget.php",{email:$("#email").val()},(res)=>{
         $("#result").text(res)
-        console.log(res)
+        // console.log(res)
     })
 }
 </script>
