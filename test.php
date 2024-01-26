@@ -11,9 +11,7 @@
         width:600px;
     }
 </style>
-<div class="nav">
-    目前位置:首頁>分類網誌><span class="type">健康新知</span>
-</div>
+<div class="nav">目前位置:首頁 > 分類網誌 > <span class="type">健康新知</span></div>
 
 <fieldset class='types'>
     <legend>分類網誌</legend>
@@ -29,15 +27,16 @@
     </div>
     <div class="article" ></div>
 </fieldset>
-<script>
-    getList(1)    
-    $('.type-item').on('click',function() {
-        $('.type').text($(this).text())
-        let type = $(this).data('id')
-        getList(type)
-    })
 
-    function getList(type){
+<script>
+getList(1)    
+    $(".type-item").on('click',function(){
+        $(".type").text($(this).text())
+        let type=$(this).data('id')
+        getList(type)
+
+    })
+function getList(type){
     $.get("./api/get_list.php",{type},(list)=>{
         $(".list-items").html(list)
         $(".article").hide();

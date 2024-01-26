@@ -1,18 +1,20 @@
 <style>
-    .tags{
+    .tags {
         display: flex;
         margin-left: 1px;
     }
-    .tag{
+
+    .tag {
         width: 100px;
         padding: 5px 10px;
-        border:1px solid black;
+        border: 1px solid black;
         margin-left: -1px;
         text-align: center;
         background-color: #ccc;
         cursor: pointer;
     }
-    article section{
+
+    article section {
         border: 1px solid black;
         min-height: 480px;
         margin-top: -1px;
@@ -20,7 +22,8 @@
         padding: 15px;
 
     }
-    .active{
+
+    .active {
         border-bottom: 1px solid white;
         background-color: wheat;
     }
@@ -41,33 +44,33 @@
         <pre>缺乏運動已成為影響全球死亡率的第四大危險因子-國人無規律運動之比率高達72</pre>
     </section>
     <section id="section02">
-    <h2>菸害防治</h2>
-    <pre>
+        <h2>菸害防治</h2>
+        <pre>
 菸害防治法規
 ..........
-</pre>   
+</pre>
     </section>
     <section id="section03">
-    <h2>癌症防治</h2>
-<pre>
+        <h2>癌症防治</h2>
+        <pre>
 降低罹癌風險 建構健康生活型態
 ........
-</pre>     
+</pre>
     </section>
     <section id="section04">
-    <h2>慢性病防治</h2>
-<pre>
+        <h2>慢性病防治</h2>
+        <pre>
 長期憋尿 泌尿系統問題多 
 ...........
-</pre>    
+</pre>
     </section>
 </article>
 <script>
-   $(".tag").on('click',function(){
+    $(".tag").on('click', function() {
         $(".tag").removeClass('active')
         $(this).addClass('active')
-        let id=$(this).attr('id').replace("sec",'section');
+        let id = $(this).attr('id').replace("sec", 'section');
         $("section").hide();
-        $("#"+id).show();
-   })
+        $("#" + id).show();
+    })
 </script>
