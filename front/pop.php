@@ -13,7 +13,7 @@
         $now=$_GET['p']??1;
         $start=($now-1)*$div;
 
-        $rows=$News->all(['sh'=>1]," limit $start,$div");
+        $rows=$News->all(['sh'=>1]," order by `good` desc limit $start,$div");
         foreach($rows as $row){
         ?>
         <tr>
@@ -36,9 +36,11 @@
             <?php
             if(isset($_SESSION['user'])){
                 if($Log->count(['news'=>$row['id'],'acc'=>$_SESSION['user']])>0){
-                    echo "<a herf='Javascript:good({$row['id']})'>收回讚 </a>";
+                    echo "<a href='Javascript:good({$row['id']})'>收回讚</a>";
+                    
                 }else{
-                    echo "<a herf='Javascript:good({$row['id']})'>讚 </a>";
+                    echo "<a href='Javascript:good({$row['id']})'>讚</a>";
+                    
                 }
             }
             ?>
@@ -74,10 +76,10 @@
 });
     
 function good(news){
-	$.post("./api/good.php",{news},()=>{
+	$.post("./api/good.php",{news},(e)=>{
         //使用重整頁面的方式來更新按讚的結果
 		location.reload();
-
+            // alert(e)
         // /*或是使用前端的方式來更新頁面上的文字
         // //根據點擊的文字來決定動作
 		// switch($("#n"+news).text()){
