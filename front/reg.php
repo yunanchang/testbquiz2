@@ -45,8 +45,8 @@
                         alert('帳號重複')
                     }else{
                         $.post('./api/reg.php',user,(res)=>{
-                            // alert('註冊完成')
-                            console.log(res)
+                            alert('註冊完成')
+                            // console.log(res)
                         })
                     }
                 })
