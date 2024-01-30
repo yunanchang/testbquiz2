@@ -22,11 +22,12 @@
                     <?=$row['title'];?>
                 </div>
             </td>
-            <td>
-                <div id="s<?=$row['id'];?>">
+            <td style="position: relative;">
+                <div >
                     <?=mb_substr($row['news'],0,25);?>...
                 </div>
-                <div id="a<?=$row['id'];?>" style='display:none'>
+                <div id="p<?=$row['id'];?>" class='pop'>
+                <h3 style='color:skyblue'><?=$row['title'];?> </h3>
                     <?=$row['news'];?>
                 </div>
             </td>
@@ -66,15 +67,15 @@
     </div>
 </fieldset>
 <script>
-    // $('.title').on('click',(e)=>{
-    //     let id=$(e.target).data('id');
-    //     $(`#s${id},#a${id}`).toggle();
-    // });
-    $('.title').on('click', function() {
-    let id = $(this).data('id');
-    $(`#s${id}, #a${id}`).toggle();
-});
-    
+$(".title").hover(
+    function(){
+        $(".pop").hide()
+        let id=$(this).data("id")
+        $("#p"+id).show();
+    }
+)
+
+
 function good(news){
 	$.post("./api/good.php",{news},(e)=>{
         //使用重整頁面的方式來更新按讚的結果
