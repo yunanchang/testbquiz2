@@ -9,7 +9,8 @@ $que=$Que->find($_GET['id']);
   <?php
     $opts=$Que->all(['subject_id'=>$_GET['id']]);
     foreach($opts as $opt){
-        $total=($que['vote']);
+        $total=($que['vote']!=0)?$que['vote']:1;
+        $rate=round($opt['vote'])
     }
   ?>
 </fieldset>
