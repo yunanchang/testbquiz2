@@ -4,7 +4,7 @@
 if(isset($_POST['id'])){
     foreach($_POST['id'] as $id){
         if(isset($_POST['del']) && in_array($id,$_POST['del'])){
-            $News->del('id');
+            $News->del($id);
             
         }else{
             $news=$News->find($id);

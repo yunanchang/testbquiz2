@@ -63,9 +63,9 @@ class DB{
         if(isset($array['id'])){
             $sql = "update `$this->table` set ";
     
-           
+            if (!empty($array)) {
                 $tmp = $this->a2s($array);
-            
+            } 
         
             $sql .= join(",", $tmp);
             $sql .= " where `id`='{$array['id']}'";
@@ -112,22 +112,23 @@ class DB{
 
     private function sql_all($sql,$array,$other){
 
-      
+        if (isset($this->table) && !empty($this->table)) {
     
             if (is_array($array)) {
     
-               
+                if (!empty($array)) {
                     $tmp = $this->a2s($array);
                     $sql .= " where " . join(" && ", $tmp);
-                
+                }
             } else {
                 $sql .= " $array";
             }
     
             $sql .= $other;
-          
+            // echo 'all=>'.$sql;
+            // $rows = $this->pdo->query($sql)->fetchColumn();
             return $sql;
-         
+        } 
     }
 
 }
@@ -151,7 +152,7 @@ $News=new DB('news');
 
 if(isset($_SESSION['visited'])){
     if($Total->count(['date'=>date('Y-m-d')])>0){
-        $total=$Total->all(['date'=>date('Y-m-d')])[0];
+        $total=$Total->find(['date'=>date('Y-m-d')]);
         $total['total']++;
         $Total->save($total);
     }else{

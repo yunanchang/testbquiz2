@@ -17,7 +17,7 @@
                     <td><?=$row['acc'];?></td>
                     <td><?=str_repeat('*',mb_strlen($row['pw']));?></td>
                     <td>
-                        <input type="checkbox" name="del[]" id="<?=$row['id'];?>">
+                        <input type="checkbox" name="del[]" value="<?=$row['id'];?>">
                     </td>
                 </tr>
 
