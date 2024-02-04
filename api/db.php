@@ -46,17 +46,17 @@ class DB{
     
     function find($id)
     {
-        $sql = "select * from `$this->table` ";
+        $sql = "select * from `$this->table` where";
     
         if (is_array($id)) {
             $tmp = $this->a2s($id);
-            $sql .= " where " . join(" && ", $tmp);
+            $sql .= join(" && ", $tmp);
         } else if (is_numeric($id)) {
-            $sql .= " where `id`='$id'";
+            $sql .= " `id`='$id'";
         } 
         //echo 'find=>'.$sql;
-        $row = $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
-        return $row;
+        return $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
+         
     }
     
     function save($array){

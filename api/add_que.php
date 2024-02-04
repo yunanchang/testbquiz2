@@ -7,7 +7,7 @@ if(isset($_POST['subject'])){
                 'subject_id'=>0,
                 'vote'=>0]);
    //  $subject_id=$Que->max('id');
-    $subject_id=$Que->find(['text'=>$_POST['subject']])['id'];
+    $subject_id=$Que->all(['text'=>$_POST['subject']])[0]['id'];
   
 }
 if(isset($_POST['option'])){
